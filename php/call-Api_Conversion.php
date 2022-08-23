@@ -244,28 +244,28 @@
 			[
 				"converter" => "AutoXchange AX2020",
 				"version" => "V1.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2022",
 				"version" => "V2.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "AutoXchange AX2020 DEMO",
 				"version" => "V1.00",
-				"executable" => $ax2020_executable,
+				"executable" => $ax2023_executable,
 				"location" => $converterLocation,
 				"status" => "active"
 			],
 			[
 				"converter" => "LinkList 2020",
 				"version" => "V2.00",
-				"executable" => $linklist2022_executable,
+				"executable" => $linklist2023_executable,
 				"location" => $linklistLocation,
 				"status" => "active"
 			]
@@ -362,8 +362,7 @@
 		
 		$command_line =	$engine_path . " \"" . $contentlocation ."\">" .$fullPath;
 	
-		
-		//echo "hello this is test: \n\r " . $command_line;
+		//echo "\n\r " . $command_line;
 		
 		// Now we Execute the conversion on LibreDWG
 
@@ -465,7 +464,7 @@
 
 
 
-//// THESE ARE HANDLING RELATED TO AUTOXCHANGE 2023 
+//// THESE ARE HANDLING RELATED TO AUTOXCHANGE 2020 
 	if ($json_request['action'] == 'conversion' ||  $json_request['action'] == 'data_extraction' || $json_request['action'] == 'svg_js_creation_cvheadless' || $json_request['action'] == 'svg_js_creation' || $json_request['action'] == 'svg_creation' || $json_request['action'] == 'pdf_creation' || $json_request['action'] == 'svg_creation_sharepoint_REST' ) {
 
 		$contenttype = $json_request['contentType'];
@@ -1115,9 +1114,6 @@ set_time_limit(240);
 			fwrite($fd_log, "current script owner: " . get_current_user()."    \r\n");
 			fwrite($fd_log, "operating_system_detection(): " . operating_system_detection($debug, $fd_log)."    \r\n");
 		}
-
-			// echo "hello this is test: \n\r " . $command_line;
-			// echo spawn command
 
 			exec( $command_line, $out, $return1);
 			
