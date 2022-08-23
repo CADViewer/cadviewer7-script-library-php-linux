@@ -11,7 +11,7 @@
 
 //  Http Host   - note use direct setting if path different from /cadviewer/. 
 //  URL to the location of home directory the converter infrastructure
-	$httpHost = "http://localhost/cadviewer/";
+//	$httpHost = "http://localhost/cadviewer/";
 
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
