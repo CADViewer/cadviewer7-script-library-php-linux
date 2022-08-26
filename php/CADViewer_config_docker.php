@@ -4,11 +4,14 @@
 // NOTE: USE THIS FOR LOCALHOST RUNNING HTTP!!!!!!!
 // $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-//  New: Use this code to find $httpHost and $home_dir based on current location, if under /cadviewer/
-	$actual_link = "https" . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	
-	// NOTE:  nginx container / docker container running, will internally run http, but externally https: therefore
-	//   $httpPhpUrl  will be wrong unless forced to https 
+//  New: Use this code to find $httpHost and $home_dir based on current location, if under /cadviewer/ and in a docker containter
+$actual_link = "https" . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+
+
+
+
+
 
 	$pos1 = stripos($actual_link, "/cadviewer/");
 	$httpHost = substr($actual_link, 0, $pos1+ 11);
@@ -23,9 +26,9 @@
 
 //  Home directory, the local path corresponding to the http host - note use direct setting if path different from cadviewer. 
 //  Windows
-	$home_dir = "/xampp/htdocs/cadviewer";
+//	$home_dir = "/xampp/htdocs/cadviewer";
 //  Linux
-//	$home_dir = "/var/www/html/cadviewer";
+	$home_dir = "/var/www/html/cadviewer";
 
 
 //MOST PATHS ARE SET UP BASED ON HttpHost and home_dir    (Users can change this setting if an implementation needs to split up locations)
@@ -34,14 +37,14 @@
 
 
 // set the platform for /converter subfolder
-	$platform = "windows";
-//	$platform = "linux";
+//	$platform = "windows";
+	$platform = "linux";
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$ax2023_executable = "ax2023_L64_23_05_88";
+	$ax2023_executable = "ax2023_L64_23_05_88";
 // 	Windows
-	$ax2023_executable = "AX2023_W64_23_05_88.exe";
+//	$ax2023_executable = "AX2023_W64_23_05_88.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
@@ -49,15 +52,15 @@
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
+	$dwgmerge2020_executable = "DwgMerge_W32_19_01_02";
 // 	Windows
-	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
+//	$dwgmerge2020_executable = "DwgMerge_W32_20_02_00b.exe";
 
 //  DwgMerge engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-//	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
+	$linklist2023_executable = "LinkList_2023_W64_23_05_25";
 // 	Windows
-	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
+//	$linklist2023_executable = "LinkList_2023_W64_23_05_25.exe";
 
 
 
