@@ -13,30 +13,53 @@
 	
 */
 
+	// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
+	require 'CADViewer_config.php';
+
+
+	// respond to preflights
+	if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+		// return only the headers and not the content
+		// only allow CORS if we're doing a GET - i.e. no saving for now.
+		$http_origin = '';
+		if (isset($_SERVER['HTTP_ORIGIN'])) {
+		$http_origin = $_SERVER['HTTP_ORIGIN'];
+		}
+		elseif (isset($_SERVER['HTTP_REFERER'])) {
+		$http_origin = $_SERVER['HTTP_REFERER'];
+		}
+		
+		if ($checkorigin){
+			
+			if (in_array($http_origin, $allowed_domains))
+			{
+				header("Access-Control-Allow-Origin: $http_origin");
+				header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+				header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+			}	
+		
+		}
+		else{
+		
+			header("Access-Control-Allow-Origin: *");
+			header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+			header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+		}
+		exit;
+	}
+
 
 	$http_origin = '';
 
 	if (isset($_SERVER['HTTP_ORIGIN'])) {
-	  $http_origin = $_SERVER['HTTP_ORIGIN'];
+	$http_origin = $_SERVER['HTTP_ORIGIN'];
 	}
 	elseif (isset($_SERVER['HTTP_REFERER'])) {
-	  $http_origin = $_SERVER['HTTP_REFERER'];
+	$http_origin = $_SERVER['HTTP_REFERER'];
 	}
 
-	// allow CORS or control it
-	if (true){
-		header("Access-Control-Allow-Origin: $http_origin");
-		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-		header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
-	}
-	else{
-
-		$allowed_domains = array(
-		  'http://localhost:8080',
-		  'http://localhost:8081',
-		  'http://localhost',
-		);
-
+	if ($checkorigin){
+		
 		if (in_array($http_origin, $allowed_domains))
 		{
 			header("Access-Control-Allow-Origin: $http_origin");
@@ -44,12 +67,15 @@
 			header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
 		}	
 	}
+	else{
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+		header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
+	}
 
 
 
 
-	// Configuration file for CADViewer Community and CADViewer Enterprise version and standard settings
-	require 'CADViewer_config.php';
 
 	// Configuration file for CADViewer Enterprise specific settings - Note!: CADViewer_config.php must be set!
 	//require 'CADViewer_Enterprise_config.php';
