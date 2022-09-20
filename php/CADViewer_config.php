@@ -31,9 +31,9 @@
 	
 //  Conversion engines executables - names stays stable with each upgrade of conversion engines:
 // 	Linux
-	$ax2023_executable = "ax2023_L64_23_08_91";
+	$ax2023_executable = "ax2023_L64_23_08_92";
 // 	Windows
-//	$ax2023_executable = "AX2023_W64_23_05_88.exe";
+//	$ax2023_executable = "AX2023_W64_23_08_92.exe";
 
 //  USE svgz compression
 	$svgz_compress = false;   // default is false
@@ -61,10 +61,9 @@
 		'*'
 	  );
 
-
-
-
-
+	// set to false for CADViewer 7.1.8 onwards,   true for previous versions of CADViewer
+	$jsonp_flag = false;
+	
 
 //  URL to the location of controlling php files
 //  Windows  Linux
